@@ -1,0 +1,255 @@
+body {
+	background-color: #333;
+}
+
+.App{
+}
+
+.form {
+	position: absolute;
+	top: 30%;
+	left: 40%;
+	min-width: 300px;
+	width: 20%;
+	color: silver;
+	font-size: 20px;
+	border: 1px solid #555;
+	padding: 10px;
+	background-color: #333;
+	border-radius: 5px;
+}
+
+.input-label{
+	text-align: left;
+	margin-top: 5px;
+	font-size: 20px;
+}
+
+.input-field {
+	box-sizing: border-box;
+	width: 100%;
+	background-color: #444;
+	color: silver;
+	border: 1px solid #777;
+	font-size: 20px;
+	margin-top: 1px;
+	padding: 1px 2px 1px 2px;
+}
+
+.submit-btn {
+	display: inline;
+	width: 100%;
+	color: silver;
+	background-color: #222;
+	border: 1px solid #777;
+	font-size: 20px;
+	padding: 4px;
+	margin-top: 10px;
+}
+
+.navbar {
+	/position: absolute;
+	top: 0px;
+	width: 100%;
+	background-color: #222;
+	border: 1px solid #333;
+	list-style-type: none;
+	padding: 0px;
+	margin: 0px;
+	height: 50px;
+}
+
+li {
+	float: left;
+	text-align: center;
+}
+
+.center {
+	text-align: center;
+}
+
+.navbar li a:hover{
+	background-color: #111;
+}
+.navbar li button:hover{
+	background-color: #111;
+}
+
+.rightFloat {
+	float: right;
+	display: inline;
+}
+
+.nav-link{
+	border: none;
+	background-color: #222;
+	font-size: 24px;
+	color: silver;
+	display: block;
+	text-decoration: none;
+	line-height: 50px;
+	padding: 0px 10px 0px 10px;
+	border-radius: 5px;
+}
+
+.nav-btn{
+	border: none;
+	background-color: #222;
+	font-size: 24px;
+	color: silver;
+	display: block;
+	text-decoration: none;
+	height: 50px;
+	padding: 0px 10px 0px 10px;
+	border-radius: 5px;
+}
+
+.activeBtn {
+	background-color: #555;
+}
+
+.error-msg {
+	color: #d33;
+	font-size: 14px;
+}
+
+.dd-wrapper{
+	border-radius: 15px;
+}
+
+.dd-header{
+	background-color: #222;
+	font-size: 24px;
+	height: 50px;
+	color: silver;
+	text-decoration: none;
+	line-height: 50px;
+	padding-left: 15px;
+	border-radius: 5px;
+}
+
+.dd-header:hover {
+	background-color: #111;
+}
+
+.dd-list{
+	background-color: #222;
+	list-style: none;
+	padding: 0;
+	border-radius: 0px 0px 10px 10px;
+	box-sizing: border-box;
+}
+
+.dd-list-item {
+}
+
+.profile-btn{
+	min-width: 120px;
+	text-align: left;
+}
+
+.log-out-btn{
+	min-width: 120px;
+	border: none;
+	background-color: #222;
+	font-size: 24px;
+	color: silver;
+	height: 50px;
+	border-radius: 0px 0px 10px 10px;
+}
+
+.dd-arrow {
+	display: inline;
+	float: right;
+	padding-right: 20px;
+}
+
+.blog-viewer {
+	box-sizing: border-box;
+	position: absolute;
+	background-color: #222;
+	left: 10%;
+	width: 80%;
+	color: silver;
+	padding: 50px;
+	border-radius: 10px;
+}
+
+.blog-post {
+	padding-bottom: 30px;
+	border-bottom: 1px solid grey;
+}
+
+.blog-title {
+	color: #DCDCDC;
+	margin: 10px 0px 10px 0px;
+}
+
+.blog-description{
+	margin: 10px 0px 20px 0px;
+}
+
+.write-blog-btn {
+	border: none;
+	/width: 10px;
+	background-color: #444;
+	font-size: 26px;
+	border-radius: 4px;
+	color: lightgrey;
+	text-align: center;
+	text-decoration: none;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.write-blog-btn:hover {
+	background-color: #111;
+}
+
+.right-align {
+	text-align: right;
+	vertical-align: 0;
+	margin-left: 10px;
+}
+
+.blog-form{
+	box-sizing: border-box;
+	position: absolute;
+	background-color: #222;
+	left: 10%;
+	width: 80%;
+	color: silver;
+	padding: 50px 50px 20px 50px;
+	border-radius: 5px;
+}
+
+.input-field-textarea {
+	box-sizing: border-box;
+	width: 100%;
+	min-height: 400px;
+	resize: none;
+	background-color: #444;
+	color: silver;
+	border: 1px solid #777;
+	font-size: 20px;
+	margin-top: 1px;
+	padding: 1px 2px 1px 2px;
+}
+
+.page-nav {
+	margin-top: 20px;
+}
+
+.page {
+	background-color: #222;
+	border: none;
+	text-decoration: none;
+	color: silver;
+	margin-right: 10px;
+	font-size: 20px;
+}
+
+.active-page {
+	color: #DCDCDC;
+	font-weight: bold;
+}

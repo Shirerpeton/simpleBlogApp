@@ -1,0 +1,25 @@
+{
+  "name": "simpleblogapp",
+  "version": "1.0.0",
+  "description": "Simple blog web app",
+  "main": "app.js",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "concurrently": "^4.1.2",
+    "koa": "^2.7.0",
+    "koa-bodyparser": "^4.2.1",
+    "koa-router": "^7.4.0",
+    "koa-session": "^5.12.3",
+    "mongoose": "^5.6.11",
+    "nodemon": "^1.19.1",
+    "yup": "^0.27.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+	"server": "nodemon app.js",
+	"client": "npm start --prefix client",
+	"start": "concurrently \"npm run server\" \"npm run client \" -k"
+  },
+  "author": "HyloxalusFallax",
+  "license": "ISC"
+}
