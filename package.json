@@ -6,19 +6,19 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "concurrently": "^4.1.2",
-    "koa": "^2.7.0",
+    "koa": "^2.11.0",
     "koa-bodyparser": "^4.2.1",
     "koa-router": "^7.4.0",
     "koa-session": "^5.12.3",
-    "mongoose": "^5.6.11",
-    "nodemon": "^1.19.1",
+    "mongoose": "^5.8.9",
+    "nodemon": "^1.19.4",
     "yup": "^0.27.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-	"server": "nodemon app.js",
-	"client": "npm start --prefix client",
-	"start": "concurrently \"npm run server\" \"npm run client \" -k"
+    "server": "nodemon app.js",
+    "client": "npm start --prefix client",
+    "start": "concurrently \"npm run server\" \"npm run client \" -k"
   },
   "author": "HyloxalusFallax",
   "license": "ISC"

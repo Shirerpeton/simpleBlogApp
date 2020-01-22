@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 const saltRounds = 8;
 
 const mongoose = require('mongoose');
+mongoose.set('useUnifiedTopology', true);
 const Schema = mongoose.Schema;
 const ObjectId = mongoose.Schema.Types.ObjectId;
 mongoose.set('useCreateIndex', true);
@@ -143,10 +144,9 @@ router.get('/logout', async (ctx) => {
 });
 
 router.get('/blogs/page/:page', async (ctx) => {
-	//await new blogModel({author: '12', title: 'some shitty blog post title', text: 'some shitty blog post text'}).save();
 	const page = ctx.params.page;
 	console.log('blogs request for page ' + page);
-	const result = await blogModel.find({}).sort('-date').exec();
+	const result = await blogModel.find({}).sort('-date').select('-_id').exec();
 	const lastpage = Math.ceil(result.length / 10);
 	const responsePage = page > lastpage ? lastpage : page;
 	const blogs = result.slice((responsePage - 1) * 10, responsePage * 10);

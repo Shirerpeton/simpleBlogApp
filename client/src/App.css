@@ -25,6 +25,10 @@ body {
 	font-size: 20px;
 }
 
+.blog-title {
+	text-decoration: none;
+}
+
 .input-field {
 	box-sizing: border-box;
 	width: 100%;

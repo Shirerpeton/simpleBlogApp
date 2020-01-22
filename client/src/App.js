@@ -63,7 +63,7 @@ class App extends React.Component {
 				<div className="App">
 					<NavBar 
 						left={[
-							<NavLink to="/page/1" className="nav-link" location={{pathname: '/' + window.location.href.split('/').slice(-2, -1).join('/') + '/1'}} activeClassName="activeBtn">
+							<NavLink to="/page/1" className="nav-link" isActive={(match, location) => location.pathname.split('/').slice(-2)[0] === 'page'} activeClassName="activeBtn">
 								Home
 							</NavLink>,
 							<NavLink exact to="/users" className="nav-link" activeClassName="activeBtn">
@@ -79,6 +79,7 @@ class App extends React.Component {
 							}
 					/>
 						<Switch>
+							<Route path='/blog/' component={BlogPage} />
 							<Route path='/login' render={(props) => <LogInForm {...props} logInHandle={this.logInHandle} />} />
 							<Route path='/signup' render={(props) => <SignUpForm {...props} logInHandle={this.logInHandle} />}/>
 							<Route path='/page/' component={BlogViewer} />
@@ -475,12 +476,13 @@ class BlogViewer extends React.Component {
 	}
 	
 	render(){
+		//console.log(this.props);
 		return(
 			<div className='blog-viewer'>
 			<WriteBlogBtn />
 			<PageNav page={this.state.page} lastpage={this.state.lastpage} firstPage={this.firstPage} prevPage={this.prevPage} nextPage={this.nextPage} lastPage={this.lastPage} />
 				{this.state.blogs.map((blog, index) => 
-					<Blog title={blog.title} text={blog.text} author={blog.author} date={moment(blog.date).format('DD/MM/YYYY')} key={blog._id}/>
+					<Blog title={blog.title} text={blog.text} author={blog.author} date={moment(blog.date).format('DD/MM/YYYY')} id={(moment(blog.date).format('DD/MM/YYYY') + '/' + blog.title).toLowerCase().replace(/ /g, '-')} />
 				)}
 			<PageNav page={this.state.page} lastpage={this.state.lastpage} firstPage={this.firstPage} prevPage={this.prevPage} nextPage={this.nextPage} lastPage={this.lastPage} />
 			</div>
@@ -489,7 +491,6 @@ class BlogViewer extends React.Component {
 }
 
 class WriteBlogBtn extends React.Component {
-	
 	handleClick(){
 		this.props.history.push('/new');
 	}
@@ -506,9 +507,30 @@ class WriteBlogBtn extends React.Component {
 	}
 }
 
-function Blog(props) {
+class Blog extends React.Component {
+	constructor(props){
+		super(props);
+	}
+	render () {
+		console.log(this.props);
+		return(
+			<div className='blog-post'>
+				<Link to={'/blog/' + this.props.id} className='blog-title'>
+					<h1 className='blog-title'>{this.props.title}</h1>
+				</Link>
+				<h4 className='blog-description'>Posted on {this.props.date} by {this.props.author}</h4>
+				<div>
+					{this.props.text}
+				</div>
+			</div>
+		);
+	}
+}
+
+function BlogPage(props) {
 	return(
-		<div className='blog-post'>
+		<div classname='blog-page'>
+			Blog Page
 			<h1 className='blog-title'>{props.title}</h1>
 			<h4 className='blog-description'>Posted on {props.date} by {props.author}</h4>
 			<div>
