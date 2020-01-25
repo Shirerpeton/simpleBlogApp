@@ -214,11 +214,13 @@ router.get('/blog/:author/:year/:month/:day/:blogtitle', async(ctx) => {
 		const year = ctx.params.year;
 		const blogtitle = ctx.params.blogtitle;
 		const author = ctx.params.author;
-		//console.log('day: ' + day + '; month: ' + month + '; year: ' + year + '; title: ' + blogtitle + ';');
 		const id = author + '/' + year + '/' + month + '/' + day + '/' + blogtitle;
-		const result = await blogModel.find({id: id}).select('-_id').exec();
-		console.log('get blog post: ' + id);
-		console.log(result);
+		console.log('request for blog ' + id);
+		let result = await blogModel.find({id: id}).select('-_id').exec();
+		if (result.length === 1) {
+			result = result[0];
+			ctx.body = {status: 'ok', author: result.author, title: result.title, text: result.text, date: result.date, id: result.id};
+		}
 		return;
 	} catch (err) {
 		ctx.response.status = 500;

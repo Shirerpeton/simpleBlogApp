@@ -179,9 +179,21 @@ li {
 	border-radius: 10px;
 }
 
+.blog-page {
+	box-sizing: border-box;
+	position: absolute;
+	background-color: #222;
+	left: 10%;
+	width: 80%;
+	color: silver;
+	padding: 50px;
+	border-radius: 10px;
+}
+
 .blog-post {
 	padding-bottom: 30px;
 	border-bottom: 1px solid grey;
+	overflow-wrap: break-word;
 }
 
 .blog-title {

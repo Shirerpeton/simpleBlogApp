@@ -535,10 +535,16 @@ class BlogPage extends React.Component {
 	
 	async updateContent() {
 		try {
-			var response = await axios.get(window.location.href);
-		} catch(err) {
-			console.log(err.response.data.msg);
+			try {
+				var response = await axios.get(window.location.href);
+			} catch(err) {
+				console.log(err.response.data.msg);
+			}
+			this.setState({author: response.data.author, text: response.data.text, date: moment(response.data.date).format('DD/MM/YYYY'), title: response.data.title, id: response.data.id});
+		} catch (err) {
+			console.log(err);
 		}
+		
 	}
 	
 	componentDidMount() {
@@ -548,7 +554,6 @@ class BlogPage extends React.Component {
 	render() {
 		return(
 			<div className='blog-page'>
-				Blog Page
 				<h1 className='blog-title'>{this.state.title}</h1>
 				<h4 className='blog-description'>Posted on {this.state.date} by {this.state.author}</h4>
 				<div>
