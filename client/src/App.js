@@ -482,7 +482,7 @@ class BlogViewer extends React.Component {
 			<WriteBlogBtn />
 			<PageNav page={this.state.page} lastpage={this.state.lastpage} firstPage={this.firstPage} prevPage={this.prevPage} nextPage={this.nextPage} lastPage={this.lastPage} />
 				{this.state.blogs.map((blog, index) => 
-					<Blog title={blog.title} text={blog.text} author={blog.author} date={moment(blog.date).format('DD/MM/YYYY')} id={(moment(blog.date).format('DD/MM/YYYY') + '/' + blog.title).toLowerCase().replace(/ /g, '-')} />
+					<Blog title={blog.title} text={blog.text} author={blog.author} date={moment(blog.date).format('DD/MM/YYYY')} id={blog.author + '/' + (moment(blog.date).format('YYYY/MM/DD') + '/' + blog.title).toLowerCase().replace(/ /g, '-')} key={index} />
 				)}
 			<PageNav page={this.state.page} lastpage={this.state.lastpage} firstPage={this.firstPage} prevPage={this.prevPage} nextPage={this.nextPage} lastPage={this.lastPage} />
 			</div>
@@ -512,7 +512,6 @@ class Blog extends React.Component {
 		super(props);
 	}
 	render () {
-		console.log(this.props);
 		return(
 			<div className='blog-post'>
 				<Link to={'/blog/' + this.props.id} className='blog-title'>
@@ -527,17 +526,37 @@ class Blog extends React.Component {
 	}
 }
 
-function BlogPage(props) {
-	return(
-		<div classname='blog-page'>
-			Blog Page
-			<h1 className='blog-title'>{props.title}</h1>
-			<h4 className='blog-description'>Posted on {props.date} by {props.author}</h4>
-			<div>
-				{props.text}
+class BlogPage extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {author: null, date: null, title: null, id: null, text: null};
+		this.updateContent = this.updateContent.bind(this);
+	}
+	
+	async updateContent() {
+		try {
+			var response = await axios.get(window.location.href);
+		} catch(err) {
+			console.log(err.response.data.msg);
+		}
+	}
+	
+	componentDidMount() {
+		this.updateContent();
+	}
+	
+	render() {
+		return(
+			<div className='blog-page'>
+				Blog Page
+				<h1 className='blog-title'>{this.state.title}</h1>
+				<h4 className='blog-description'>Posted on {this.state.date} by {this.state.author}</h4>
+				<div>
+					{this.state.text}
+				</div>
 			</div>
-		</div>
-	);
+		);
+	}
 }
 
 const DropDownBtn = onClickOutside(DropDown);
